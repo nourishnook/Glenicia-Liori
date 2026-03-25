@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Help Glenicia & Liori Get Home | Sint Maarten → Los Angeles</title>
+<meta name="description" content="Former Ms. Sint Maarten, World Bank consultant, Forbes competition winner , Glenicia Mitchell is moving her family from Sint Maarten to Los Angeles. Help her get there whole.">
+<meta property="og:title" content="Help Glenicia & Liori Leave the Island & Build Their Dream in LA">
+<meta property="og:description" content="From homeless & pregnant in the Netherlands to #1 in a Forbes competition , this is not a wish. This is a plan. Help bridge the gap.">
+<meta property="og:url" content="https://gleniciamitchell.github.io">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #080808;
+    --gold: #C9A84C;
+    --gold-bright: #E8C86A;
+    --gold-dim: rgba(201,168,76,0.12);
+    --gold-line: rgba(201,168,76,0.22);
+    --cream: #F4EFE6;
+    --cream-dim: rgba(244,239,230,0.6);
+    --cream-faint: rgba(244,239,230,0.08);
+    --rust: #B85030;
+    --teal: #1E6B6B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--gold); color: var(--ink); }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    background: rgba(8,8,8,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--gold-line);
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 10px 22px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--gold-bright); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 140px 40px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    bottom: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(184,80,48,0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .route-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: rise 0.9s ease 0.1s forwards;
+  }
+
+  .route-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); opacity: 0.6; }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 9vw, 110px);
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -2px;
+    color: var(--cream);
+    margin-bottom: 32px;
+    max-width: 900px;
+    opacity: 0;
+    animation: rise 1s ease 0.3s forwards;
+  }
+
+  .hero-title em { font-style: italic; color: var(--gold); }
+
+  .hero-line {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 32px;
+    opacity: 0;
+    animation: rise 1s ease 0.5s forwards;
+  }
+
+  .hero-sub {
+    font-size: clamp(17px, 2.2vw, 22px);
+    line-height: 1.75;
+    color: var(--cream);
+    font-weight: 400;
+    max-width: 620px;
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: rise 1s ease 0.6s forwards;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: rise 1s ease 0.8s forwards;
+  }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--ink);
+    padding: 16px 36px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-gold:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.25); }
+
+  .btn-outline {
+    background: none;
+    color: var(--cream);
+    padding: 16px 36px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(244,239,230,0.2);
+    transition: all 0.25s;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-countdown {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    text-align: right;
+    opacity: 0;
+    animation: rise 1s ease 1s forwards;
+  }
+
+  .countdown-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .countdown-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-top: 4px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-line), transparent);
+  }
+
+  /* ── SECTION ── */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 96px 40px;
+  }
+
+  .s-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .s-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 36px;
+  }
+
+  h2 em { font-style: italic; color: var(--gold); }
+
+  .body-text {
+    font-size: 16px;
+    line-height: 1.95;
+    color: var(--cream-dim);
+    margin-bottom: 22px;
+  }
+
+  .body-text strong { color: var(--cream); font-weight: 500; }
+
+  .pull-quote {
+    border-left: 3px solid var(--gold);
+    padding: 20px 28px;
+    margin: 36px 0;
+    background: var(--gold-dim);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── CRED GRID ── */
+  .cred-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 40px 0;
+  }
+
+  .cred-card {
+    padding: 22px 24px;
+    background: var(--cream-faint);
+    border: 1px solid rgba(244,239,230,0.07);
+    border-radius: 10px;
+    transition: all 0.25s;
+  }
+
+  .cred-card:hover { border-color: var(--gold-line); background: var(--gold-dim); }
+
+  .cred-card-tag {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+    margin-bottom: 8px;
+  }
+
+  .cred-card-val {
+    font-size: 14px;
+    color: var(--cream);
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  /* ── STORY BODY ── */
+  .story-chapter {
+    margin: 48px 0;
+    padding-top: 48px;
+    border-top: 1px solid rgba(244,239,230,0.06);
+  }
+
+  .chapter-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 20px;
+    opacity: 0.55;
+  }
+
+  /* ── COST TABLE ── */
+  .cost-list { margin: 32px 0; }
+
+  .cost-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(244,239,230,0.06);
+  }
+
+  .cost-item:last-child { border-bottom: none; }
+
+  .cost-item-left h4 {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 5px;
+  }
+
+  .cost-item-left p {
+    font-size: 12px;
+    color: rgba(244,239,230,0.35);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .cost-item-right {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--gold);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .cost-goal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-line);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-top: 12px;
+  }
+
+  .cost-goal-left {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+  }
+
+  .cost-goal-right {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  /* ── PAYMENT ── */
+  .pay-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 36px 0;
+  }
+
+  .pay-card {
+    border-radius: 12px;
+    padding: 26px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    transition: all 0.25s;
+  }
+
+  .pay-card.featured {
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-line);
+  }
+
+  .pay-card.standard {
+    background: var(--cream-faint);
+    border: 1px solid rgba(244,239,230,0.07);
+  }
+
+  .pay-card:hover { transform: translateY(-3px); border-color: var(--gold-line); }
+
+  .pay-icon { font-size: 30px; margin-bottom: 12px; }
+
+  .pay-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .pay-handle {
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  .pay-desc {
+    font-size: 11px;
+    color: rgba(244,239,230,0.4);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .pay-badge {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-dim);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--gold-line);
+  }
+
+  .pay-private {
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-line);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.75);
+    display: block;
+    line-height: 1.7;
+    margin-top: 8px;
+  }
+
+  /* ── SHARE SECTION ── */
+  .share-strip {
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-line);
+    border-radius: 14px;
+    padding: 40px;
+    text-align: center;
+    margin: 0 40px;
+    max-width: 860px;
+    margin: 0 auto 80px;
+  }
+
+  .share-strip h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+
+  .share-strip p {
+    font-size: 15px;
+    color: var(--cream-dim);
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  .share-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .share-btn {
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .share-btn.primary { background: var(--gold); color: var(--ink); font-weight: 600; border: none; }
+  .share-btn.primary:hover { background: var(--gold-bright); }
+  .share-btn.ghost { background: none; color: var(--cream); border: 1px solid rgba(244,239,230,0.2); }
+  .share-btn.ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 60px 40px;
+    border-top: 1px solid var(--gold-line);
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+
+  .footer-links a {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.2s;
+    opacity: 0.75;
+  }
+
+  .footer-links a:hover { color: var(--gold); opacity: 1; }
+
+  .footer-note {
+    font-size: 12px;
+    color: rgba(244,239,230,0.6);
+    line-height: 1.7;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-name { font-size: 15px; }
+    .hero { padding: 120px 24px 120px; }
+    .hero-countdown { bottom: 24px; right: 24px; }
+    .countdown-big { font-size: 44px; }
+    .section { padding: 70px 24px; }
+    .cred-grid { grid-template-columns: 1fr; }
+    .pay-grid { grid-template-columns: 1fr 1fr; }
+    .pay-grid .pay-card:first-child { grid-column: span 2; }
+    .share-strip { margin: 0 24px 60px; padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">Glenicia Mitchell</div>
+  <a href="https://www.gofundme.com/f/fund-glenicias-and-lioris-move-to-build-a-new-future" target="_blank" class="nav-cta">Fund This Move ↗</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="route-tag">
+    <span>🇸🇽 Sint Maarten</span>
+    <div class="route-dot"></div>
+    <span>Texas</span>
+    <div class="route-dot"></div>
+    <span>🌴 Los Angeles</span>
+  </div>
+
+  <h1 class="hero-title">
+    From the <em>Island.</em><br>
+    Toward the <em>Dream.</em>
+  </h1>
+
+  <div class="hero-line"></div>
+
+  <p class="hero-sub">
+    Former Ms. Sint Maarten. World Bank consultant. Forbes competition winner.
+    Help Glenicia & Liori ship their lives across an ocean and a continent; and land whole.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="https://www.gofundme.com/f/fund-glenicias-and-lioris-move-to-build-a-new-future" target="_blank" class="btn-gold">
+      💛 Fund This Move
+    </a>
+    <a href="#story" class="btn-outline">Read Her Story</a>
+  </div>
+
+  <div class="hero-countdown">
+    <div class="countdown-big" id="countdown">9</div>
+    <div class="countdown-label">Days to April 1st</div>
+  </div>
+</div>
+
+<!-- HERO PHOTO BANNER -->
+<div style="width: 100%; background: var(--ink);">
+  <img src="hero.jpg" alt="Glenicia and Liori" style="width: 100%; display: block; height: auto; max-width: 100%; object-fit: contain;">
+</div>
+
+<div class="divider"></div>
+
+<!-- GIVE NOW - MOVED TO TOP -->
+<div class="section">
+  <div class="s-label">Give Now</div>
+  <h2>Every Way to<br><em>Show Up.</em></h2>
+  <p class="body-text">Pick whichever is easiest. Every dollar goes directly to Glenicia and Liori.</p>
+
+  <div class="pay-grid">
+    <a href="https://www.gofundme.com/f/fund-glenicias-and-lioris-move-to-build-a-new-future" target="_blank" class="pay-card featured">
+      <div class="pay-icon">💛</div>
+      <div class="pay-name">GoFundMe</div>
+      <div class="pay-handle">Full Campaign</div>
+      <p class="pay-desc">Read the full story and donate.</p>
+      <span class="pay-badge">Primary</span>
+    </a>
+    <a href="https://buymeacoffee.com/flexyflexyflexy" target="_blank" class="pay-card featured">
+      <div class="pay-icon">☕</div>
+      <div class="pay-name">Buy Me a Coffee</div>
+      <div class="pay-handle">flexyflexyflexy</div>
+      <p class="pay-desc">Best for international donors. Any currency.</p>
+      <span class="pay-badge">International</span>
+    </a>
+    <a href="https://cash.app/$glenmitch88" target="_blank" class="pay-card featured">
+      <div class="pay-icon">💸</div>
+      <div class="pay-name">Cash App</div>
+      <div class="pay-handle">$glenmitch88</div>
+      <p class="pay-desc">Instant for US donors.</p>
+      <span class="pay-badge">US Instant</span>
+    </a>
+  </div>
+
+  <div class="pay-private">
+    💚 <strong>Wise</strong> , @liorimenterprisesllc · Zero fees. Best for Caribbean, European & Dutch donors.
+  </div>
+  <div class="pay-private">
+    💜 <strong>Revolut</strong> , glenicpue6 · Great for European donors already on Revolut.
+  </div>
+  <div class="pay-private">
+    🏦 <strong>Direct Bank Transfer</strong> (US · SXM · EU) , DM <strong>@gleniciamitchell</strong> on Instagram with the word <strong>DIRECT</strong> and account details will be sent to you privately.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- WHO SHE IS -->
+<div class="section" id="story">
+  <div class="s-label">Who She Is</div>
+  <h2>The Receipts<br>Speak for <em>Themselves.</em></h2>
+
+  <div class="cred-grid">
+    <div class="cred-card">
+      <div class="cred-card-tag">Identity</div>
+      <div class="cred-card-val">Former Ms. Sint Maarten & Ms. Carnival · Jaycees Caribbean Debate Winner · Multi-sport champion</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-card-tag">Government & World Bank</div>
+      <div class="cred-card-val">Senior Communications Consultant, National Recovery Trust Fund , conjoint World Bank work, Hurricane Irma relief · 2022–2025</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-card-tag">Forbes × Daymond John</div>
+      <div class="cred-card-val">Ranked #1 in group for 7 consecutive weeks , Forbes competition judged by Daymond John & Colossal Impact Investors</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-card-tag">InvestFest · Nipsey Hussle Pitch</div>
+      <div class="cred-card-val">Top 5 out of 2,500+ entries · Won $25k grand prize from Pinky Cole · Operation Hope mentorship with John Hope Bryant</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-card-tag">Health & Wellness</div>
+      <div class="cred-card-val">Certified Holistic Health Coach · Ayurvedic Practitioner · Founder, The Nourish Nook · 13k followers · 480+ clients served</div>
+    </div>
+    <div class="cred-card">
+      <div class="cred-card-tag">Media & Communications</div>
+      <div class="cred-card-val">Founder, IrateMind Media · Former Chef of 14 years · Food Microbiologist · AI Ethics Strategist</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- STORY - TRIMMED -->
+<div class="section">
+  <div class="s-label">The Story</div>
+  <h2>This Is What It Looks Like<br>When Someone <em>Refuses to Stop.</em></h2>
+
+  <div class="pull-quote">
+    <p>"Be vulnerable. It is truly a superpower."</p>
+  </div>
+
+  <div class="story-chapter">
+    <div class="chapter-label">The Netherlands · 2019–2021</div>
+    <p class="body-text">Homeless and pregnant in a foreign country. Moving through shelters in the Netherlands alone, rebuilding from absolutely nothing. I know what the bottom feels like. I built my way out of it once. I am doing it again.</p>
+  </div>
+
+  <div class="story-chapter">
+    <div class="chapter-label">The Climb · 2024–2025</div>
+    <p class="body-text">At InvestFest my friends physically <strong>pushed me out of my seat</strong> when I hesitated. I went forward. I won $25k from Pinky Cole. Then I ranked <strong>#1 for seven consecutive weeks</strong> in a Forbes competition judged by Daymond John.</p>
+  </div>
+
+  <div class="story-chapter">
+    <div class="chapter-label">The Hard Year · 2025</div>
+    <div class="pull-quote">
+      <p>"From May to November 2025 I had not earned one cent. I applied to 221 jobs. Two hundred and twenty-one."</p>
+    </div>
+    <p class="body-text">I took a hostess job way below my level just to buy my ticket. That is not a sob story. That is what it looks like when someone refuses to stop.</p>
+  </div>
+
+  <div style="margin-top: 48px; background: var(--gold-dim); border: 1px solid var(--gold-line); border-radius: 16px; padding: 48px 40px; text-align: center;">
+    <p style="font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px;">The Full Picture</p>
+    <h3 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 700; color: var(--cream); line-height: 1.15; margin-bottom: 20px;">The rest of this story<br>will make you want to<br><em style="color: var(--gold);">back her.</em></h3>
+    <p style="font-size: 16px; color: var(--cream-dim); line-height: 1.8; max-width: 480px; margin: 0 auto 32px;">Photos. Pitch videos. Press coverage. Proof links. All of it is on GoFundMe.</p>
+    <a href="https://www.gofundme.com/f/fund-glenicias-and-lioris-move-to-build-a-new-future" target="_blank" class="btn-gold" style="display: inline-flex;">
+      Read the Full Story & Fund This Move ↗
+    </a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COSTS -->
+<div class="section">
+  <div class="s-label">Where Your Money Goes</div>
+  <h2>Every Dollar.<br><em>Accounted For.</em></h2>
+  <p class="body-text">Not overhead. Not lifestyle. Getting a family from a Caribbean island to storage in the US while building toward what comes next.</p>
+
+  <div class="cost-list">
+    <div class="cost-item">
+      <div class="cost-item-left">
+        <h4>Ocean Freight + Flight Baggage Fees</h4>
+        <p>Sint Maarten → Miami · LCL shared container · Port & customs fees</p>
+      </div>
+      <div class="cost-item-right">$800–$1,500</div>
+    </div>
+    <div class="cost-item">
+      <div class="cost-item-left">
+        <h4>Cross-Country Freight</h4>
+        <p>Miami → US Storage · ~1,300 miles · Direct from port where possible</p>
+      </div>
+      <div class="cost-item-right">$2,000–$3,500</div>
+    </div>
+    <div class="cost-item">
+      <div class="cost-item-left">
+        <h4>Climate-Controlled Storage</h4>
+        <p>3–4 months while building toward LA · Protects against heat & humidity</p>
+      </div>
+      <div class="cost-item-right">$450–$900</div>
+    </div>
+    <div class="cost-item">
+      <div class="cost-item-left">
+        <h4>Emergency Passport & Government Fees</h4>
+        <p>Processing fees · Currently filed & awaiting arrival before April 1st</p>
+      </div>
+      <div class="cost-item-right">$200–$400</div>
+    </div>
+    <div class="cost-item">
+      <div class="cost-item-left">
+        <h4>USCIS Filing, Notaries & Temporary Custody</h4>
+        <p>Liori's documentation, resettlement costs & associated legal fees</p>
+      </div>
+      <div class="cost-item-right">$1,900–$2,500</div>
+    </div>
+    <div class="cost-item">
+      <div class="cost-item-left">
+        <h4>Packing Materials & Contingency</h4>
+        <p>Boxes, crating, unforeseen port delays or logistics costs</p>
+      </div>
+      <div class="cost-item-right">$300–$500</div>
+    </div>
+  </div>
+
+  <div class="cost-goal">
+    <div class="cost-goal-left">GoFundMe Goal</div>
+    <div class="cost-goal-right">$7,500</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SHARE -->
+<div class="section" style="padding-bottom: 40px;">
+  <div class="share-strip">
+    <h3>"If you can't give , share.<br>Sharing costs nothing and means everything."</h3>
+    <p>Sint Maarten raised her. Los Angeles is calling her. Help her get there whole.</p>
+    <div class="share-btns">
+      <a href="https://www.gofundme.com/f/fund-glenicias-and-lioris-move-to-build-a-new-future" target="_blank" class="share-btn primary">💛 Go Fund Her</a>
+      <button class="share-btn ghost" onclick="copyLink()">⬡ Copy Link</button>
+      <a href="https://www.instagram.com/gleniciamitchell" target="_blank" class="share-btn ghost">📱 Follow Her Journey</a>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM PAYMENT SECTION -->
+<div class="section">
+  <div class="s-label">Give Now</div>
+  <h2>Ready to<br><em>Help?</em></h2>
+  <p class="body-text">Every dollar goes directly to Glenicia and Liori. Pick whichever works best for you.</p>
+
+  <div class="pay-grid">
+    <a href="https://www.gofundme.com/f/fund-glenicias-and-lioris-move-to-build-a-new-future" target="_blank" class="pay-card featured">
+      <div class="pay-icon">💛</div>
+      <div class="pay-name">GoFundMe</div>
+      <div class="pay-handle">Full Campaign</div>
+      <p class="pay-desc">Read the full story and donate.</p>
+      <span class="pay-badge">Primary</span>
+    </a>
+    <a href="https://buymeacoffee.com/flexyflexyflexy" target="_blank" class="pay-card featured">
+      <div class="pay-icon">☕</div>
+      <div class="pay-name">Buy Me a Coffee</div>
+      <div class="pay-handle">flexyflexyflexy</div>
+      <p class="pay-desc">Best for international donors. Any currency.</p>
+      <span class="pay-badge">International</span>
+    </a>
+    <a href="https://cash.app/$glenmitch88" target="_blank" class="pay-card featured">
+      <div class="pay-icon">💸</div>
+      <div class="pay-name">Cash App</div>
+      <div class="pay-handle">$glenmitch88</div>
+      <p class="pay-desc">Instant for US donors.</p>
+      <span class="pay-badge">US Instant</span>
+    </a>
+  </div>
+
+  <div class="pay-private">
+    💚 <strong>Wise</strong> , @liorimenterprisesllc · Zero fees. Best for Caribbean, European & Dutch donors.
+  </div>
+  <div class="pay-private">
+    💜 <strong>Revolut</strong> , glenicpue6 · Great for European donors already on Revolut.
+  </div>
+  <div class="pay-private">
+    🏦 <strong>Direct Bank Transfer</strong> (US · SXM · EU) , DM <strong>@gleniciamitchell</strong> on Instagram with the word <strong>DIRECT</strong> and account details will be sent to you privately.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Glenicia Mitchell</div>
+  <div class="footer-links">
+    <a href="https://www.gofundme.com/f/fund-glenicias-and-lioris-move-to-build-a-new-future" target="_blank">GoFundMe</a>
+    <a href="https://buymeacoffee.com/flexyflexyflexy" target="_blank">Buy Me a Coffee</a>
+    <a href="https://cash.app/$glenmitch88" target="_blank">Cash App $glenmitch88</a>
+    <a href="https://www.linkedin.com/in/gleniciamitchell" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/gleniciamitchell" target="_blank">Instagram</a>
+  </div>
+  <p class="footer-note" style="margin-bottom: 12px;">
+    💚 Wise: @liorimenterprisesllc &nbsp;·&nbsp; 💜 Revolut: glenicpue6 &nbsp;·&nbsp; 🏦 Bank details: DM @gleniciamitchell with "DIRECT"
+  </p>
+  <p class="footer-note">
+    Chief Identity Officer · Founder, The Nourish Nook & IrateMind Media<br>
+    Sint Maarten → Los Angeles · April 2026
+  </p>
+</footer>
+
+<script>
+  // Live countdown
+  const dept = new Date('2026-04-01T00:00:00');
+  const el = document.getElementById('countdown');
+  function updateCountdown() {
+    const diff = Math.ceil((dept - new Date()) / 86400000);
+    el.textContent = diff > 0 ? diff : '0';
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+
+  // Copy link
+  function copyLink() {
+    navigator.clipboard.writeText('https://www.gofundme.com/f/fund-glenicias-and-lioris-move-to-build-a-new-future').then(() => {
+      const btn = event.target;
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = orig, 2000);
+    });
+  }
+</script>
+</body>
+</html>
